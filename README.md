@@ -38,16 +38,12 @@ Reference design images - this is approximately how the finished design will loo
 - Stretch goal: App store
 - Stretch goal: LeRobot integration, OpenClaw
 
-## v0 Goal
+** v0 target: bare-bones build:
 
-**MVP target: 2026-08-31** — bare-bones build:
-
-- ROS2 on Raspberry Pi 5 OR (decision TBD) ESP32 running micro-ROS with ROS2 on local PC
-- LiDAR with manual SLAM
-- Gazebo sim
 - 3D-printed chassis
-
-See [ARCHITECTURE.md](ARCHITECTURE.md) for details.
+- ROS2 Gazebo sim
+- LiDAR with manual SLAM
+- ROS2 on Raspberry Pi 5 AND/OR ESP32 running micro-ROS with ROS2 on local PC - decision TBD
 
 Open Source Deliverables:
 
@@ -66,9 +62,10 @@ source every part yourself.
 
 ## Contributing
 
+Would you like to contribute?
+
 oomwoo is organized to built by the community, massively **in parallel**.
-The vacuum and its software are subdivided into **modules**.
-The list of modules is published in the **Request for Contributions** [RFC_MASTER_LIST.md](RFC_MASTER_LIST.md) document.
+The vacuum and its software are subdivided into [modules/contributions](), see list below.
 
 A volunteer picks whatever module she wants, works on that module whenever she wants,
 submits her contribution as a PR under contibutions/module_name/github_username.
@@ -76,38 +73,25 @@ submits her contribution as a PR under contibutions/module_name/github_username.
 Multiple developers are welcome to work on the same module.
 The best solution for each module surfaces for over time, with the project master having the last call.
 
-1. Read [CONTRIBUTING.md](CONTRIBUTING.md) for how it works.
-2. Browse [RFC_MASTER_LIST.md](RFC_MASTER_LIST.md) and pick a contribution to make, usually a hardware or software module.
-   (Software and simulation modules can start right now.)
+1. Pick a contribution from the [list below](#requests-for-contributions).
+2. [Let us know](https://github.com/makerspet/oomwoo/discussions) you're working on it and your progress.
 3. Check [ARCHITECTURE.md](ARCHITECTURE.md) for the system design and interfaces.
-4. Say hi on [Discord](https://discord.gg/3y2JKz5T25) or in
-   [Discussions](https://github.com/makerspet/oomwoo/discussions).
+4. Say hi on [Discord](https://discord.gg/3y2JKz5T25)
 
-## Documentation
+Follow us building in public:
 
-- [ARCHITECTURE.md](ARCHITECTURE.md) — system design, interfaces, MVP scope
-- [CONTRIBUTING.md](CONTRIBUTING.md) — how to contribute
-
-## Community
-
-- Discord: [Join the Maker's Pet server](https://discord.gg/3y2JKz5T25)
-- Discussions: [GitHub Discussions](https://github.com/makerspet/oomwoo/discussions)
 - Reddit: build-in-public home at [r/ArduinoAndRobotics](https://www.reddit.com/r/ArduinoAndRobotics/)
 - YouTube: [build-in-public channel](https://www.youtube.com/@makerspet)
 - X: [@0OMWO0](https://x.com/@0OMWO0)
 
 ## Requests for Contributions
 
-Would you like to contribute?
-
-Pick a contribution from the list below and [let me know](https://github.com/makerspet/oomwoo/discussions) you're working on it and your progress.
-
 | Module | ID | Phase | Notes |
 |---|---|---|---|
 | ROS2 URDF + Gazebo sim | [urdf-gazebo-sim](./contributions/urdf-gazebo-sim) | Ready to start work | Design URDF, TF, simulate in Gazebo |
 | Dust bin 3D design | [dust-bin](./contributions/dust-bin) | Ready to start work | Design, 3D print, test dust bin |
 
-## Source Code
+## Source code reference
 
 - [oomwoo ROS2 and Ubuntu installation](https://github.com/makerspet/oomwoo-install/) source code
 - [oomwoo ROS2 URDF package and config](https://github.com/makerspet/oomwoo_urdf/) source code
@@ -128,7 +112,7 @@ Pick a contribution from the list below and [let me know](https://github.com/mak
 
 The project name "oomwoo" is a rotational ambigram - it reads the same flipped 180°, like the robot itself, roaming your floor in every direction.
 
-The project is sponsored by makerspet.com and remake.ai. We are reusing their open-source solutions as templates.
+The project is sponsored by makerspet.com and remake.ai. We are reusing their open-source solutions.
 - If you'd rather skip the parts hunt, a kit (motors, PCB, brushes, gaskets, LiDAR) will be available at [makerspet.com](https://makerspet.com), from the same maker behind this project. The kit is a convenience, never a requirement. **Everything here stays open.**
 - When we get to apps, [remake.ai](https://remake.ai) will be providing its robot apps platform and app store. Using the app store will be entirely optional. The vacuum will **always support cloud-free, local operation for regular functionality out-of-the-box**. 
 

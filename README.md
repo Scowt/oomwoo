@@ -159,7 +159,7 @@ flowchart TD
 - [oomwoo ROS2 URDF package and config](https://github.com/makerspet/oomwoo_urdf/) source code
 - [remakeai reference vacuum teardown](https://github.com/remakeai/vacuum-cleaner-teardown) — a consumer LiDAR vacuum with a basic dock and stationary mop.
 
-## Related prior art you should know about
+## Related prior art
 
 - [AlieksieievYurii/vacuum-cleaner](https://github.com/AlieksieievYurii/vacuum-cleaner) — a DIY 3D-printed robot vacuum (Raspberry
   Pi Zero W, gyroscope-based, Fusion 360, Android control app, no dock)
@@ -169,6 +169,7 @@ flowchart TD
 - [Dennis Giese / robotinfo.dev](https://robotinfo.dev) — teardowns and rootability of commercial robot vacuums.
 - [codetiger/VacuumTiger](https://github.com/codetiger/VacuumTiger) - 3irobotix CRL-200-based vacuum low-level control reverse engineered
 - [Build a ROS2/LiDAR robot crash course](https://makerspet.com/blog/build-arduino-self-driving-robot-video-instructions/) - watch this if you have no robotics experience
+- [Open Mower](openmower.de) - open-source outdoor lawn mower
 
 ## About
 

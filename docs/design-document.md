@@ -74,19 +74,24 @@ Omni (~$499 all-rounder), Dreame X40 Ultra (dual-spinning mop; Dreame = best don
 gearbox, encoder, rubber compound, spring, pump, or bearing is precision you can buy
 for a few dollars; anything custom-shaped that mates with the oomwoo chassis, print.
 
-| Component | Verdict | Why / how |
+| Component | Source or 3D print | Why / how |
 |---|---|---|
-| **Driving wheel assemblies** | **Source (whole module)** | Complete drive modules (gearmotor + encoder + suspension + rubber tire) are ~$5–15 on [AliExpress](https://www.aliexpress.com/w/wholesale-robot-vacuum-cleaner-wheel-parts.html). FDM can't match the gearbox/encoder/tire/spring. Print at most an adapter bracket. The #1 "don't print it" part. |
-| **Universal / caster wheel** | **Print** (or source ball caster) | Simple passive swivel; reuse the [3D-printable omni-wheel](https://makerspet.com/blog/3d-printable-omni-wheel/) design, or a cheap ball caster. |
+| **Driving wheel assemblies** | **Source (whole module)** | Complete drive modules (gearmotor + encoder + suspension + rubber tire). 3D print at most an adapter bracket. Why? Requires advanced skill - possibly SLA for gearbox, FDM TPU tire. The #1 "don't print it" part. |
+| **Universal / caster wheel** | **Print** or source wheel/ball caster. | Likely a simple passive swivel, possibly TPU. |
 | **Side brush assembly** | **Hybrid** | Source brush + small gearmotor; print the mount. Fit a **common replaceable brush**. Fixed (not extendable) for v1. |
 | **Main brush** | **Source / hybrid** | Tapered rubber anti-tangle roller in a **common wear-part size**; source compatible, or print core + rubber. |
 | **Bumper** | **Hybrid** | Print floating shroud; source lever microswitches + return springs. |
 | **Dust bin / water tank** | **Print body + source guts** | Print custom body (mates airflow); source filter (common HEPA size), gasket (or TPU print), latch spring. Water tank adds a sourced **pump + solenoid valve + tubing**. |
 | **Mop lift** | **Hybrid (P2)** | Print cam/linkage; source a small **servo or geared motor**. |
+| Mop disposable cloths | **Source** | Source (easier) or DIY sew. |
 | **Enclosure / top shell** | **Print** | Custom cosmetic/structural; no off-the-shelf equivalent. Design for splitting to fit common print beds. |
 | **Dock (basic charge)** | **Print housing + source contacts** | Source **pogo pins / spring contacts / magnets** (magnets can carry [10 A](https://xdaforums.com/t/home-made-pogo-pin-charging-dock.2019847/)) + wall adapter + IR-beacon LEDs. Plenty of [DIY precedent](https://www.instructables.com/Roamer-the-Self-Charging-Companion-Robot/). |
-| **Auto-empty dock** | **Defer / off-the-shelf** | Needs its own fan + bin (commercial-scale). Off-the-shelf corded vac bolted to a printed dock is the DIY path. |
+| **Auto-empty dock** | **3D print enclosure + source bin/fan** | Needs its own fan + bin (commercial-scale). Off-the-shelf corded vac bolted to a printed dock is the DIY path. |
+| **Mop dock** | **3D print enclosure + source water tanks/hookups** | Needs its own fan + bin (commercial-scale). Off-the-shelf corded vac bolted to a printed dock is the DIY path. |
 | Battery, LiDAR, motors, PCB, fasteners, bearings, gaskets | **Source** | Standard sourced parts (custom PCB + LiDAR aside). |
+| Single Board Computer | **Source** | Raspberry Pi 5 4GB or better for first model. |
+| Input/Output board | **Custom** | No DIY-vacuum I/O PCBs I'm aware of. I'll design a custom PCB for sensors and motor drivers. |
+| Cameras, sensors, LiDAR | **Source** | Color + distance cameras for top-tier obstacle avoidance. IR cliff, side proximity sensors. Ultrasonic carpet sensor. |
 
 **Sourcing strategy:** deliberately spec sourced wear parts (brushes, filters, wheel
 modules) in **common, abundant sizes** so users buy cheap "universal" / Roomba-style

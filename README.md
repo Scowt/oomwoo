@@ -209,3 +209,6 @@ Code is released under the [Apache License 2.0](LICENSE).
 
 Hardware design files, once added, to be released under an open hardware
 license (TBD).
+
+## Star History
+[![Star History Chart](https://api.star-history.com/svg?repos=makerspet/oomwoo&type=Date)](https://star-history.com/#makerspet/oomwoo&Date)

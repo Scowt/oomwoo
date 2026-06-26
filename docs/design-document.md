@@ -84,6 +84,7 @@ for a few dollars; anything custom-shaped that mates with the oomwoo chassis, pr
 | **Dust bin / water tank** | **Print body + source guts** | Print custom body (mates airflow); source filter (common HEPA size), gasket (or TPU print), latch spring. Water tank adds a sourced **pump + solenoid valve + tubing**. |
 | **Mop lift** | **Hybrid (P2)** | Print cam/linkage; source a small **servo or geared motor**. |
 | Mop disposable cloths | **Source** | Source (easier) or DIY sew. |
+| Mop dryer | **Source** | Source the mop dryer. |
 | **Enclosure / top shell** | **Print** | Custom cosmetic/structural; no off-the-shelf equivalent. Design for splitting to fit common print beds. |
 | **Dock (basic charge)** | **Print housing + source contacts** | Source **pogo pins / spring contacts / magnets** (magnets can carry [10 A](https://xdaforums.com/t/home-made-pogo-pin-charging-dock.2019847/)) + wall adapter + IR-beacon LEDs. Plenty of [DIY precedent](https://www.instructables.com/Roamer-the-Self-Charging-Companion-Robot/). |
 | **Auto-empty dock** | **3D print enclosure + source bin/fan** | Needs its own fan + bin (commercial-scale). Off-the-shelf corded vac bolted to a printed dock is the DIY path. |

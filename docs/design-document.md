@@ -127,14 +127,206 @@ for a DIY/printable platform:
 
 ---
 
-## 4. Still to research / open decisions
+## 4. Compute (SBC)
 
-- **Compute:** onboard RPi 5 vs ESP32 + micro-ROS with ROS2 on a PC (or support both).
-- **Motor-driver / power PCB:** driver ICs (DRV8833 / TB6612), rail design, connectors.
-- **Battery:** chemistry (Li-ion 3S/4S?), cells + BMS, charging — **safety review**.
+**v1: Raspberry Pi 5 (4 GB).** Chosen to onboard the large Raspberry Pi community —
+the biggest contributor wedge. Runs ROS2 + LiDAR SLAM + Nav2 comfortably. No on-board NPU.
+
+- **ML vision option — Hailo AI HAT.** Add the RPi M.2 AI Kit (Hailo-8L, ~13 TOPS) for
+  real-time camera obstacle detection: keeps the entire RPi ecosystem advantage *and*
+  gains an NPU. ⚠️ **Check the board-stack height** — a vacuum is only ~10 cm tall and
+  the M.2 HAT adds Z. Evaluate alternatives (Coral USB/M.2 accelerator, or lighter
+  CPU-only models) against the height budget.
+- **Later: Rockchip RK3588 / RK3576.** Orange Pi 5, Radxa Rock 5B, Banana Pi CM5 —
+  built-in **6 TOPS NPU**, RKNN toolkit, YOLO ~65 ms/image. Cheaper and integrated, but
+  driver / ROS2 / kernel maturity **lags RPi**, so it's a *later* move, not the
+  community-onboarding one.
+
+---
+
+## 5. I/O board (custom, JLCPCB)
+
+No off-the-shelf DIY-vacuum I/O board exists, so we design one. It carries an **MCU
+running micro-ROS** that talks to the SBC over a fast serial / USB link: the SBC does
+ROS2 / SLAM / nav / vision; the board does real-time motor + sensor I/O.
+
+**MCU:** STM32G070RBT6 (LQFP64, ~$0.93 @ 100 pcs) — cheap, lots of peripherals.
+⚠️ **Pin-budget risk:** the full peripheral set below is a lot for 64 pins. Do a
+pin-allocation spreadsheet before committing. Offload the **BLDC fan to an external
+ESC** (1 PWM pin instead of in-MCU FOC) to save pins and complexity. If still tight,
+consider the STM32G0B1RET6 (same family, more peripherals/RAM) or a 100-pin part.
+
+**LiDAR (3irobotix CRL-200S):** wires to the I/O board. The board **drives the LiDAR
+motor** (MOSFET + closed-loop speed control using the LiDAR's RPM feedback) and **passes
+raw LiDAR data through the MCU to the SBC** over the fast serial link. *Confirm the MCU
+UART bandwidth handles the CRL-200S data rate.*
+
+Cross-checked peripheral list (your running list + `[+]` = additions to consider):
+
+**Sensors**
+- 2D LiDAR (CRL-200S) — motor-driven + data passthrough to SBC
+- IR cliff / proximity / docking
+- Bumper micro-switches (+ optional optical/IR bumper)
+- Wheel encoders
+- Carpet ultrasonic sensor
+- Color camera → **connects to the SBC's CSI/USB, not this board**
+- VL53L7CX distance sensor (I²C)
+- Water tank level (full/empty)
+- Dust bin present / lid open-closed
+- Battery level / fuel gauge
+- Dock-connected / charge sense
+- IMU
+- `[+]` Wheel-drop / lift sensor (robot picked up) — distinct from cliff
+
+**Motor drivers**
+- Main wheels ×2
+- Main brush
+- Side brush(es)
+- `[+]` **Mop pad spin motor(s)** — for dual-spinning pads (you listed mop *lift* but not *spin*)
+- Mop lift servo
+- Water pump (low-side MOSFET)
+- Vacuum fan (BLDC) — via **external ESC** (recommended)
+- LiDAR motor (MOSFET, closed-loop)
+
+**Power**
+- Battery connector
+- Charging circuit (charge-controller IC)
+- Dock contacts
+- BMS interface
+- Current sense (per-rail and/or per-motor for stall / tangle detection)
+- DC-DC converters (5 V for SBC, 3.3 V logic, motor rails)
+- Power on/off button + soft-latch power circuit
+- `[+]` Protection: reverse-polarity, over-current fuse / eFuse, inrush limiting
+
+**Audio / UI**
+- Speaker amp + connector (audio in from the SBC)
+- Mic placeholder
+- Power / status LEDs
+- Buttons (power, dock, clean)
+- `[+]` Buzzer (cheap fallback if the speaker amp is deferred)
+
+**Host link:** USB or high-speed UART between MCU and SBC, carrying micro-ROS **and**
+the LiDAR passthrough — confirm bandwidth covers both.
+
+> **Scope note:** the **wash/dry dock has its own controller** (ESP32 + WiFi) for its
+> pumps / heater / fan / water-level. Those are **not** on the robot I/O board.
+
+---
+
+## 6. Electrical / sensor BoM sketch
+
+Rough **robot** BoM at prototype / low-qty China-sourcing prices (compresses at volume).
+Excludes the dock.
+
+| Item | Qty | ~USD | Notes |
+|---|---|---|---|
+| Drive wheel modules | 2 | 12–27 | sourced complete module |
+| Caster wheel | 1 | 0–3 | print or ball caster |
+| Suction blower (BLDC) | 1 | 8–20 | sealed sourced motor |
+| Main brush + motor | 1 | 5–12 | tapered rubber roller |
+| Side brush + motor | 1–2 | 3–8 | |
+| Mop spin motor(s) + pads | 1–2 | 6–15 | mopping models |
+| Water pump + valve + tubing | 1 | 4–10 | mopping models |
+| Mop lift servo | 1 | 2–6 | mopping models |
+| Battery pack (~14.8 V Li-ion) + BMS | 1 | 15–30 | safety review |
+| LiDAR (CRL-200S / LDS) | 1 | 30–40 | your cost |
+| VL53L7CX ToF | 1 | 8–15 | obstacle detection |
+| Color camera | 1 | 5–15 | to SBC |
+| IMU | 1 | 2–5 | |
+| IR cliff / proximity | 3–4 | 3–8 | |
+| Bumper micro-switches | 2–3 | 1–3 | |
+| Ultrasonic carpet sensor | 1 | 2–5 | |
+| Speaker + amp, mic, LEDs, buttons | — | 3–8 | |
+| Custom I/O PCB (JLCPCB assembled, low qty) | 1 | 15–40 | |
+| Wiring, connectors, fasteners, magnets, gaskets, filter | — | 12–25 | |
+| Printed parts (filament) | — | 5–15 | |
+| **Robot subtotal (sourced parts)** | | **~$130–270** | excludes SBC |
+| Raspberry Pi 5 4 GB | 1 | ~60 | |
+| Hailo AI HAT (optional, premium vision) | 1 | ~70 | |
+
+---
+
+## 7. Water system
+
+**Robot:** an onboard **clean-water tank** (printed) → **solenoid diaphragm pump** (what
+commercial units use) → mop head. For spinning pads, dirty water stays in the pads until
+the dock washes them.
+
+**Dock tiers (where the water complexity lives):**
+- **Auto-empty:** dock fan + bin/bag suck the robot's dustbin out through a sealed port.
+  The off-the-shelf-corded-vac approach works here.
+- **Wash + dry:** **clean tank + dirty tank** (printed) + **two pumps** + a wash
+  tray/roller + a **hot-air blower (heater + fan)**. Wash **must** include hot-air dry —
+  wash-without-dry breeds mildew/odor. Needs its **own ESP32 + WiFi controller**.
+- **Plumbing hookup:** offer as an *option* on the premium dock (pump + supply/drain
+  lines + valve); default to tank-based (direct plumbing needs pro install). Skip exotic
+  water-recycling (e.g. silver-ion distillation).
+- DIY parts are cheap/common: 12 V diaphragm or peristaltic pumps, solenoid valves,
+  silicone tubing, float / capacitive level sensors.
+
+---
+
+## 8. Budget target
+
+**Target: ~$100–200 sourced parts + Raspberry Pi 5 4 GB**, aiming at the capability of a
+mid-range ($500–600) commercial vacuum.
+
+- **Verdict: realistic for the mechanicals + core sensors** at the low–mid end, and it
+  compresses at volume. But **mopping + premium obstacle detection** (ToF + color camera
+  + an NPU accelerator) are exactly the line items that push toward / past $200 — the
+  Hailo HAT alone is ~$70. So $100–200 holds for a capable vacuum; "premium vision now"
+  wants a +$70-ish allowance (or defer the NPU to the Rockchip generation).
+- **Sanity check vs commercial:** a $500–600 LiDAR vacuum has roughly a **$120–180 FOB
+  BoM at 5,000 MOQ**. Our low-qty numbers are coherent — we trade *no tooling/molds*
+  (3D print) for *higher per-part cost* (no volume).
+- **Set builder expectations honestly:** total DIY spend (kit + RPi 5 + LiDAR + margin)
+  lands **above** a commercial unit's BoM. The value proposition is **openness, local
+  control, and hackability — not beating Roborock on price.**
+
+---
+
+## 9. Product lineup — shared base, three dock tiers
+
+One robot base, three dock tiers, released in order:
+1. **Basic charging dock** (first release — simplest, MVP-aligned).
+2. **Auto-empty dock** (dust).
+3. **Auto-empty + mop-wash + hot-dry dock** (the full-service tier).
+
+Notes:
+- Mirrors how commercial brands segment (same robot, dock tiers) and fits the
+  swappable-module philosophy.
+- The **mop hardware (spinning pads + onboard water tank) is an add-on module** on the
+  shared base — only the mopping models carry it; the base is otherwise constant.
+- The **wash+dry dock is almost its own mini-product** (pumps, heater, tanks, ESP32).
+  Correctly the last and hardest deliverable after the robot itself.
+- Skip a wash-**only** dock — drying is mandatory (odor).
+
+---
+
+## 10. Obstacle detection strategy (premium hardware + community ML)
+
+Targets the #1 user pain (getting stuck / eating cables). Strategy: **premium hardware
+now, ML maturity via community contribution over time.**
+
+- **Sensors:** **VL53L7CX** multizone ToF (8×8, **90° FoV**, ~350 cm — wider FoV than the
+  L5CX's 63°, better coverage) **+ color camera.** The ToF alone detects the low / small /
+  cliff objects the **LiDAR is blind to**, so v1 gets real "doesn't eat cables" value
+  **before** any ML matures — de-risks the feature.
+- **ML:** the **camera + model** is where the NPU matters (Hailo HAT now, Rockchip NPU
+  later); real-time RGB detection won't run well on the RPi 5 CPU.
+- **Community-labeled household-obstacle dataset** is a legitimately novel contribution
+  track — every contributor's home is training data. Treat it as a first-class
+  contribution track alongside the RFCs; it doubles as community-building.
+
+---
+
+## 11. Still to research / open decisions
+
+- **Battery:** chemistry (Li-ion 3S/4S?), specific cells + BMS, charge profile — **safety review**.
+- **BLDC fan ESC:** select an off-the-shelf ESC vs in-MCU drive.
 - **Filter:** pick a common, abundant filter size as the interface standard.
 - **Gasket sourcing** vs TPU printing for airflow seals.
-- **Mop water system:** pump, valve, tubing, tank fill/empty.
 - **Dock docking signal:** IR beacon protocol / fiducial / reflective marker.
 - **Fastener / heat-set insert standard** (ties to ARCHITECTURE §5.2).
+- **Confirm:** MCU pin budget, host-link bandwidth (micro-ROS + LiDAR passthrough), Hailo stack height.
 - Remaining mechanical parts not yet covered above.

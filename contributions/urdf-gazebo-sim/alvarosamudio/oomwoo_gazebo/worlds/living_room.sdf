@@ -10,21 +10,47 @@
       name="gz::sim::systems::Contact">
     </plugin>
 
+    <plugin
+      filename="gz-sim-user-commands-system"
+      name="gz::sim::systems::UserCommands">
+    </plugin>
+
     <scene>
       <ambient>0.4 0.4 0.4</ambient>
       <background>0.7 0.7 0.7</background>
     </scene>
 
-    <include>
-      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/entities/Light</uri>
-      <name>sun</name>
+    <light type="directional" name="sun">
       <pose>0 0 10 0 0 0</pose>
-    </include>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.5 0.1 -1</direction>
+    </light>
 
-    <include>
-      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/entities/Ground_Plane</uri>
-      <name>ground_plane</name>
-    </include>
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
 
     <model name="wall_01">
       <static>true</static>
@@ -32,12 +58,16 @@
       <link name="link">
         <collision name="collision">
           <geometry>
-            <box size="0.2 5.0 1.5"/>
+            <box>
+              <size>0.2 5.0 1.5</size>
+            </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
-            <box size="0.2 5.0 1.5"/>
+            <box>
+              <size>0.2 5.0 1.5</size>
+            </box>
           </geometry>
           <material>
             <ambient>0.7 0.7 0.7</ambient>
@@ -53,12 +83,16 @@
       <link name="link">
         <collision name="collision">
           <geometry>
-            <box size="0.2 5.0 1.5"/>
+            <box>
+              <size>0.2 5.0 1.5</size>
+            </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
-            <box size="0.2 5.0 1.5"/>
+            <box>
+              <size>0.2 5.0 1.5</size>
+            </box>
           </geometry>
           <material>
             <ambient>0.7 0.7 0.7</ambient>
@@ -74,12 +108,16 @@
       <link name="link">
         <collision name="collision">
           <geometry>
-            <box size="0.2 4.0 1.5"/>
+            <box>
+              <size>0.2 4.0 1.5</size>
+            </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
-            <box size="0.2 4.0 1.5"/>
+            <box>
+              <size>0.2 4.0 1.5</size>
+            </box>
           </geometry>
           <material>
             <ambient>0.7 0.7 0.7</ambient>
@@ -95,12 +133,16 @@
       <link name="link">
         <collision name="collision">
           <geometry>
-            <box size="0.2 4.0 1.5"/>
+            <box>
+              <size>0.2 4.0 1.5</size>
+            </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
-            <box size="0.2 4.0 1.5"/>
+            <box>
+              <size>0.2 4.0 1.5</size>
+            </box>
           </geometry>
           <material>
             <ambient>0.7 0.7 0.7</ambient>
@@ -116,12 +158,16 @@
       <link name="link">
         <collision name="collision">
           <geometry>
-            <box size="0.8 0.4 0.5"/>
+            <box>
+              <size>0.8 0.4 0.5</size>
+            </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
-            <box size="0.8 0.4 0.5"/>
+            <box>
+              <size>0.8 0.4 0.5</size>
+            </box>
           </geometry>
           <material>
             <ambient>0.2 0.3 0.6</ambient>
@@ -137,12 +183,16 @@
       <link name="link">
         <collision name="collision">
           <geometry>
-            <box size="0.6 0.6 0.5"/>
+            <box>
+              <size>0.6 0.6 0.5</size>
+            </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
-            <box size="0.6 0.6 0.5"/>
+            <box>
+              <size>0.6 0.6 0.5</size>
+            </box>
           </geometry>
           <material>
             <ambient>0.5 0.3 0.1</ambient>
@@ -158,12 +208,16 @@
       <link name="link">
         <collision name="collision">
           <geometry>
-            <box size="0.3 0.3 0.3"/>
+            <box>
+              <size>0.3 0.3 0.3</size>
+            </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
-            <box size="0.3 0.3 0.3"/>
+            <box>
+              <size>0.3 0.3 0.3</size>
+            </box>
           </geometry>
           <material>
             <ambient>0.8 0.2 0.2</ambient>
@@ -179,12 +233,18 @@
       <link name="link">
         <collision name="collision">
           <geometry>
-            <cylinder radius="0.15" length="0.4"/>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>0.4</length>
+            </cylinder>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
-            <cylinder radius="0.15" length="0.4"/>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>0.4</length>
+            </cylinder>
           </geometry>
           <material>
             <ambient>0.1 0.6 0.1</ambient>

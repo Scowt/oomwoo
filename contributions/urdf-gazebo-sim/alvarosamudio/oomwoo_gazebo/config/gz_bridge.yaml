@@ -36,12 +36,12 @@
 
 - ros_topic_name: "bumper_left"
   gz_topic_name: "bumper_left"
-  ros_type_name: "ros_gz_interfaces/msg/Contact"
+  ros_type_name: "ros_gz_interfaces/msg/Contacts"
   gz_type_name: "gz.msgs.Contacts"
   direction: GZ_TO_ROS
 
 - ros_topic_name: "bumper_right"
   gz_topic_name: "bumper_right"
-  ros_type_name: "ros_gz_interfaces/msg/Contact"
+  ros_type_name: "ros_gz_interfaces/msg/Contacts"
   gz_type_name: "gz.msgs.Contacts"
   direction: GZ_TO_ROS

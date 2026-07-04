@@ -5,10 +5,10 @@ cleans the whole reachable floor using coverage path planning, builds a map with
 SLAM *while* it cleans, and keeps exploring until the map is complete. Because the
 physical robot isn't built yet, this is a *Gazebo simulation*.
 
-> *Status — blocked by [urdf-gazebo-sim](../urdf-gazebo-sim).*
-> This package runs on the simulated robot (URDF, world, bumper) from that RFC, so it can't
-> be *completed* until a working simulated robot exists. You're welcome to start prototyping
-> in parallel — just say so in the discussions.
+> *Status — ready to start work.* No need to wait for OOMWOO hardware — develop it in the
+> Gazebo sim ([urdf-gazebo-sim](../urdf-gazebo-sim)) or on the real
+> [placeholder Proscenic M6 Pro](https://makerspet.com/blog/tutorial-connect-robot-vacuum-cleaner-to-ros-2-proscenic-m6-pro/).
+> Say so in the [discussions](https://github.com/makerspet/oomwoo/discussions) so we can coordinate.
 
 > *Scope.* This RFC is only the *first clean from scratch*. Operating on a *saved* map,
 > docking, recovery, floor-surface handling, and cleaning modes are deliberately *out of

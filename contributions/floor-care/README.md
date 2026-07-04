@@ -7,9 +7,10 @@ Because the physical robot isn't built yet, this is a *Gazebo simulation* — yo
 model the surfaces and the surface sensor in Gazebo; it is later re-validated on
 hardware in the [live-robot-bringup RFC](../live-robot-bringup).
 
-> *Status — blocked by [urdf-gazebo-sim](../urdf-gazebo-sim); builds on [clean-and-map](../clean-and-map).*
-> Needs the simulated robot (and likely new sim sensors/actuators) plus coverage cleaning to
-> refine, so it can't be *completed* until those exist. Prototyping in parallel is welcome.
+> *Status — ready to start work.* No need to wait for OOMWOO hardware — develop it in the
+> Gazebo sim ([urdf-gazebo-sim](../urdf-gazebo-sim)) or on the real
+> [placeholder Proscenic M6 Pro](https://makerspet.com/blog/tutorial-connect-robot-vacuum-cleaner-to-ros-2-proscenic-m6-pro/).
+> Say so in the [discussions](https://github.com/makerspet/oomwoo/discussions) so we can coordinate.
 
 # Important References
 - [clean-and-map RFC](../clean-and-map) — coverage cleaning that this refines at edges and surface transitions.

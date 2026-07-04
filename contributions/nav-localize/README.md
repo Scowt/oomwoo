@@ -7,10 +7,10 @@ robot* problem), and *resume an unfinished map*. Because the physical robot isn'
 built yet, this is a *Gazebo simulation*; it is later re-validated on hardware in
 the [live-robot-bringup RFC](../live-robot-bringup).
 
-> *Status — blocked by [urdf-gazebo-sim](../urdf-gazebo-sim) and [clean-and-map](../clean-and-map).*
-> This package runs on the simulated robot (URDF, world, bumper) from urdf-gazebo-sim
-> and consumes a map produced by clean-and-map, so it can't be *completed* until those
-> exist. You're welcome to start prototyping in parallel — just say so in the discussions.
+> *Status — ready to start work.* No need to wait for OOMWOO hardware — develop it in the
+> Gazebo sim ([urdf-gazebo-sim](../urdf-gazebo-sim)) or on the real
+> [placeholder Proscenic M6 Pro](https://makerspet.com/blog/tutorial-connect-robot-vacuum-cleaner-to-ros-2-proscenic-m6-pro/).
+> Say so in the [discussions](https://github.com/makerspet/oomwoo/discussions) so we can coordinate.
 
 # Important References
 - [clean-and-map RFC](../clean-and-map) — produces the saved/partial map this package consumes.

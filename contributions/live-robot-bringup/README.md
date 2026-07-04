@@ -12,12 +12,11 @@ cost is paid once.
 > sourced Roborock/Dreame/Xiaomi parts). This RFC eventually re-runs the same tests on real
 > OOMWOO hardware.
 
-> *Status — blocked by the behavior RFCs and by real hardware.*
-> This re-runs the simulated behaviors ([clean-and-map](../clean-and-map), [nav-localize](../nav-localize),
-> [dock-cycle](../dock-cycle), [recovery-safety](../recovery-safety), [floor-care](../floor-care),
-> [cleaning-jobs](../cleaning-jobs)) on a physical vacuum, so it can't be *completed* until they
-> exist and you have a compatible robot. Doing the bring-up / bridge in parallel is welcome and
-> unblocks everyone else's hardware testing.
+> *Status — ready to start work.* The bring-up itself is doable now — connect the
+> [placeholder Proscenic M6 Pro to ROS2](https://makerspet.com/blog/tutorial-connect-robot-vacuum-cleaner-to-ros-2-proscenic-m6-pro/)
+> with the [bridge](https://github.com/remakeai/vacuum_ros2_bridge). Re-running each behavior's
+> acceptance tests follows as those behaviors land, but doing the bring-up / bridge now unblocks
+> everyone else's hardware testing.
 
 # Important References
 - [Connect a robot vacuum (Proscenic M6 Pro) to ROS2 — tutorial](https://makerspet.com/blog/tutorial-connect-robot-vacuum-cleaner-to-ros-2-proscenic-m6-pro/) — the primary how-to for getting a real vacuum onto ROS2.

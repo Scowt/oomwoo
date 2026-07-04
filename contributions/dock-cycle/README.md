@@ -8,10 +8,10 @@ when it is lost* and relocalization has already failed. Because the physical rob
 isn't built yet, this is a *Gazebo simulation*; it is later re-validated on
 hardware in the [live-robot-bringup RFC](../live-robot-bringup).
 
-> *Status — blocked by [urdf-gazebo-sim](../urdf-gazebo-sim); builds on [nav-localize](../nav-localize) and [clean-and-map](../clean-and-map).*
-> Needs the simulated robot (URDF, world, bumper) plus a map and localization to navigate
-> to the dock, so it can't be *completed* until those exist. Prototyping the dock model in
-> parallel is welcome.
+> *Status — ready to start work.* No need to wait for OOMWOO hardware — develop it in the
+> Gazebo sim ([urdf-gazebo-sim](../urdf-gazebo-sim)) or on the real
+> [placeholder Proscenic M6 Pro](https://makerspet.com/blog/tutorial-connect-robot-vacuum-cleaner-to-ros-2-proscenic-m6-pro/).
+> Say so in the [discussions](https://github.com/makerspet/oomwoo/discussions) so we can coordinate.
 
 # Important References
 - [nav-localize RFC](../nav-localize) — localization + Nav2; the find-the-dock fallback is invoked when its relocalization fails.

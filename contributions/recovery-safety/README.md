@@ -9,9 +9,10 @@ happened. Because the physical robot isn't built yet, this is a *Gazebo
 simulation*; it is later re-validated on hardware in the
 [live-robot-bringup RFC](../live-robot-bringup).
 
-> *Status — blocked by [urdf-gazebo-sim](../urdf-gazebo-sim).*
-> This package reacts to the bumper and other sensors of that RFC's simulated robot, so it
-> can't be *completed* until the simulated robot exists. Prototyping in parallel is welcome.
+> *Status — ready to start work.* No need to wait for OOMWOO hardware — develop it in the
+> Gazebo sim ([urdf-gazebo-sim](../urdf-gazebo-sim)) or on the real
+> [placeholder Proscenic M6 Pro](https://makerspet.com/blog/tutorial-connect-robot-vacuum-cleaner-to-ros-2-proscenic-m6-pro/).
+> Say so in the [discussions](https://github.com/makerspet/oomwoo/discussions) so we can coordinate.
 
 # Important References
 - [clean-and-map RFC](../clean-and-map) and [urdf-gazebo-sim RFC](../urdf-gazebo-sim) — the *bumper* (left / right / front) and any cliff / wheel-drop sensors this package reacts to.

@@ -42,15 +42,14 @@ Retail / low-qty prices, INCLUDES shipping, excludes tax.
 | Mop spin motor(s) + pads | 1–2 | 6–15 | mopping models only | |
 | Water pump + valve + tubing | 1 | 4–10 | mopping models only | |
 | Mop lift servo | 1 | 2–6 | mopping models only | |
-| LiDAR (3irobotix CRL-200S / LDS) | 1 | 30–40 | | |
+| 2D LiDAR  | 1 | 15-30 | | |
 | VL53L7CX multizone ToF | 1 | 8–15 | obstacle detection (90° FoV) | |
 | Color camera | 1 | 5–15 | connects to the SBC | |
-| IMU | 1 | 2–5 | | |
 | IR cliff / proximity sensors | 3–4 | 3–8 | | |
 | Bumper micro-switches | 2–3 | 1–3 | | |
 | Ultrasonic carpet sensor | 1 | 2–5 | | |
 | Speaker + amp, mic, LEDs, buttons | — | 3–8 | | |
-| Custom I/O PCB (JLCPCB assembled, low qty) | 1 | 15–40 | STM32 + motor drivers + sensor front-ends | |
+| Custom I/O PCB | 1 | 20–40 | STM32 + motor drivers + sensor front-ends | |
 | Wiring, connectors, fasteners, magnets, gaskets, filter | — | 12–25 | | |
 | Printed parts (filament) | — | 5–15 | you print these yourself | |
 | *Robot subtotal (sourced parts)* | | *~$130–270* | excludes SBC | |
@@ -67,13 +66,13 @@ Three dock tiers share one robot base, released in order:
 
 | Tier | Adds | Rough extra parts |
 |---|---|---|
-| *Basic charge* (first release) | charging only | printed housing + contacts/magnets + wall adapter + IR beacon |
-| *Auto-empty* | dust auto-emptying | dock fan + bin/bag + sealed port |
-| *Auto-empty + wash + dry* | mop wash + hot-air dry | clean + dirty tanks, 2 pumps, heater + fan, *own ESP32 + WiFi controller* |
+| Basic charge (first release) | charging only | printed housing + contacts/magnets + wall adapter + IR beacon |
+| Auto-empty | dust auto-emptying | dock fan + bin/bag + sealed port |
+| Auto-empty + wash + dry | mop wash + hot-air dry | clean + dirty tanks, 2 pumps, heater + fan, own ESP32 + WiFi controller |
 
 ## Sourcing strategy
 
-- *Print geometry, source mechanisms and wear items.* See the print-vs-source table in
+- Print geometry, source mechanisms and wear items. See the print-vs-source table in
   [docs/design-document.md](docs/design-document.md#2-print-vs-source-strategy).
 - Spec wear parts (brushes, filters, wheel modules) in *common, abundant sizes* so
   builders can buy cheap universal replacements anywhere.

@@ -54,19 +54,8 @@ Open Source Deliverables:
 - [ ] 3D-printable files
 - [ ] Firmware
 - [ ] Motor drivers and sensors [I/O PCB](https://github.com/makerspet/oomwoo-io-board)
-- [ ] [Build, setup, bringup and troubleshooting instructions](BUILD_INSTRUCTIONS.md)
+- [ ] Build, setup, bringup and troubleshooting [instructions](BUILD_INSTRUCTIONS.md)
 - [ ] Demo video(s)
-
-## Build one
-
-> *Status: design / RFC stage.* Step-by-step build instructions don't exist yet —
-> they arrive once the first BoM and parts are validated (*first BoM targeted ~mid-July*).
-
-- *[Bill of Materials (BoM)](BOM.md)* — work-in-progress parts list + budget target
-- *[Build Instructions](BUILD_INSTRUCTIONS.md)* — placeholder for now; how to follow along
-
-Full build docs and a complete BoM are on the way, with the goal that you can
-source every part yourself.
 
 ## Contributing
 

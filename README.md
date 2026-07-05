@@ -73,14 +73,13 @@ The best solution for each module surfaces for over time, with the project maste
 1. Pick a contribution from the [list below](#requests-for-contributions).
 2. [Let us know](https://github.com/makerspet/oomwoo/discussions) you're working on it and your progress.
 3. Check [ARCHITECTURE.md](docs/ARCHITECTURE.md) for the system design and interfaces.
-4. Say hi on [Discord](https://discord.gg/3y2JKz5T25)
 
 Follow us building in public:
 
-- Reddit: build-in-public home at [r/ArduinoAndRobotics](https://www.reddit.com/r/ArduinoAndRobotics/)
+- [Community newsletter](https://stats.sender.net/forms/bo2rAK/view).
+- [Discord](https://discord.gg/3y2JKz5T25)
 - YouTube: [build-in-public channel](https://www.youtube.com/@makerspet)
 - X: [@0OMWO0](https://x.com/@0OMWO0)
-- [Community newsletter](https://stats.sender.net/forms/bo2rAK/view).
 
 ## Requests for Contributions
 

@@ -49,7 +49,7 @@ Retail / low-qty prices, INCLUDES shipping, excludes tax. Read [how I calculate 
 |                |   | $72.50* | Raspberry Pi CM5 ≥2 GB | *if software fits CM5102000 [PiShop](https://www.pishop.us/product/raspberry-pi-compute-module-5-wireless-2gb-ram-lite-cm5102000/) [Newark](https://www.newark.com/raspberry-pi/cm5102000/som-rpi-compute-mod-5-lite-2gb/dp/20AM3775) [DigiKey](https://www.digikey.com/en/products/detail/raspberry-pi/SC1586/25805584) CM5102016 CM5102032 CM5104064 |
 | Cliff sensors | 4 | $1.50-2.50 ea | 4x cliff + 2x bumper w/cables bundle | iRobot Roomba 500 600 700 800 528 552 564 595 560 570 610 615 620 625 630 650 [AliExpress](https://www.aliexpress.us/w/wholesale-irobot-roomba-500-cliff.html) / [Amazon](https://www.amazon.com/s?k=irobot+roomba+500+cliff) / [eBay](https://www.ebay.com/sch/i.html?_nkw=irobot+roomba+500+cliff) |
 | Bumper switches | 2 | $0 | Included in cliff sensors bundle | |
-| Main brush motor, gearbox | 1 | TBD | TBD | |
+| Main brush motor, gearbox | 1 | $7-11 | Requires brush socket adapter | Fits Roborock S5, S50, S51, S52, 55 502-00/01/02/03**S552-00, S6; Xiaowa C10, E20, E25, E35 [AliExpress](https://www.aliexpress.us/w/wholesale-roborock-s5-main-brush-motor.html) / [Amazon](https://www.amazon.com/s?k=roborock+s5+main+brush+motor) / [eBay](https://www.ebay.com/sch/i.html?_nkw=roborock+s5+main+brush+motor) |
 | Side brush + motor | 1–2 | 3–8 | fixed (extendable is later) | |
 | Mop spin motor(s) + pads | 1–2 | 6–15 | mopping models only | |
 | Water pump + valve + tubing | 1 | 4–10 | mopping models only | |

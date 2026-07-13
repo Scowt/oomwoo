@@ -148,6 +148,7 @@ how to confirm `/cmd_vel` arbitration is safe.
 
 - PR your packages into the official distribution [makerspet/oomwoo-install](https://github.com/makerspet/oomwoo-install)
 - put your ROS2 packages under `/ros_ws/src` (don't create another colcon workspace under `~/`)
+- follow conventions of being able to select a robot package using `kaia config robot.model oomwoo_one`, see [tutorial](https://makerspet.com/blog/simulate-oomwoo-one-robot-vacuum-in-gazebo-with-ros-2/)
 
 ## Open Decisions
 
